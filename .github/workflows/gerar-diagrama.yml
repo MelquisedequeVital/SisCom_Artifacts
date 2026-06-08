@@ -15,24 +15,9 @@ jobs:
             - name: Checkout do código
               uses: actions/checkout@v4
 
-            - name: Configurar Java (necessário para o PlantUML)
-              uses: actions/setup-java@v4
-              with:
-                  distribution: "temurin"
-                  java-version: "21"
-
-            - name: Instalar Graphviz (necessário para diagramas complexos)
+            - name: Gerar PDF usando imagem oficial com suporte a PDF
               run: |
-                  sudo apt-get update
-                  sudo apt-get install -y graphviz
-
-            - name: Baixar o PlantUML JAR
-              run: |
-                  wget https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar -O plantuml.jar
-
-            - name: Gerar PDF a partir do PlantUML
-              run: |
-                  java -jar plantuml.jar -tpdf "diagram/Diagrama_de_Uso(SisCom).puml"
+                  docker run --rm -v ${{ github.workspace }}:/data ghcr.io/schnatterer/plantuml-pdf -tpdf "diagram/Diagrama_de_Uso(SisCom).puml"
 
             - name: Commitar e pushar o PDF de volta para o repositório
               run: |
@@ -42,7 +27,4 @@ jobs:
                   git add "diagram/Diagrama_de_Uso(SisCom).pdf"
 
                   git commit -m "Automação: PDF do PlantUML atualizado" || echo "Sem alterações no diagrama."
-                  
-                  git pull --rebase origin main
-
                   git push
