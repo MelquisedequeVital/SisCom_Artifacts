@@ -1,0 +1,17 @@
+@startuml
+
+:Usuário do Sistema: as UdS
+:Usuário Comum: as UC
+:Usuário Requerente: as Uente
+:Usuário Requerido: as Uido
+:Administrador: as Admin
+:Gestor:
+
+UdS <|-- UC
+UC <|-- Uente
+UC <|-- Uido
+UC <|-- Gestor
+UdS <|-- Admin
+
+
+@enduml
