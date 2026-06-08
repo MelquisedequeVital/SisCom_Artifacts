@@ -13,5 +13,7 @@ UC <|-- Uido
 UC <|-- Gestor
 UdS <|-- Admin
 
+UdS -- (trocar mensagens)
+
 
 @enduml
