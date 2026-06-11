@@ -98,5 +98,4 @@ Admin --- UC_RedefinirCredenciais
 Admin --- UC_ManterReuniao
 Admin --- UC_ManterSetores
 Admin --- UC_Auditarlogs
-
 @enduml
