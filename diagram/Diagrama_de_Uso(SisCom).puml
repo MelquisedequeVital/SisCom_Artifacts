@@ -77,13 +77,12 @@ US --- UC_Calendario
 
 ' Usuário Comum
 UC --- UC_DefinirSenha
-'(essa de definir senha eu não tenho certeza)
-UC --- UC_EncerrarChamado
 UC --- UC_VisualizarFilas
 UC --- UC_Calendario
 
 ' Usuário Requerente
 UReq --- UC_AbrirChamado
+UReq --- UC_EncerrarChamado
 
 ' Gestor
 Gestor --- UC_ChatDireto
