@@ -1,8 +1,11 @@
 # Caso de Uso: UCX - Visualizar Filas de Chamados
 
 **Objetivo:** Permitir que funcionários do setor visualizem a organização dos chamados pendentes, facilitando a gestão do fluxo de trabalho e a identificação de demandas urgentes.
+
 **Requisitos:** [RF1003] - Visualização de Filas de Chamados; [RNF1007] - Departamento Responsável.
-**Atores:** Usuário Comum (Atendente do setor), Gestor.
+
+**Atores:** Usuário Requerido, Gestor.
+
 **Condição de entrada:** O usuário deve estar autenticado e acessar a aba "Filas de Atendimento" no menu principal.
 
 ---
