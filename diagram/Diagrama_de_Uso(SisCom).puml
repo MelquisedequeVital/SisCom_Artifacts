@@ -27,10 +27,8 @@ package "Autenticação e Segurança" {
 ' Comunicação 
 package "Comunicação" {
     usecase (Trocar Mensagens) as UC_TrocarMensagens
-    usecase (Redigir Mensagem Offline) as UC_TrocarMensagensOffline
     usecase (Receber Notificação de Mensagem) as UC_ReceberNotificacao
     usecase (Iniciar Chat Direto) as UC_ChatDireto
-    usecase (Enviar e Receber anexos) as UC_Anexo
     usecase (Consultar Histórico de Chats) as UC_Historico
     usecase (Consultar Histórico de Chats Offline) as UC_Historico_Offline
 }
@@ -61,8 +59,6 @@ US --- UC_Login
 US --- UC_TrocarMensagens
 US --- UC_Historico
 US --- UC_Calendario
-UC_TrocarMensagens <-- UC_Anexo: <<extend>>
-UC_TrocarMensagens <-- UC_TrocarMensagensOffline: <<extend>>
 UC_TrocarMensagens <-- UC_ReceberNotificacao: <<extend>>
 UC_Historico <-- UC_Historico_Offline: <<extend>>
 
