@@ -35,3 +35,15 @@
 1. O ator digita uma mensagem e clica no ícone de avião de papel para enviar, porém o sistema detecta que a conexão de rede caiu.
 2. O sistema retém a mensagem localmente e apresenta um indicativo visual de falha de conexão.
 3. Assim que a rede é restabelecida, o sistema processa o envio da mensagem automaticamente e a exibe na linha do tempo.
+4. 
+### Fluxos de Exceção
+
+#### E1 - Mensagem Vazia
+1. No passo 3 do Fluxo Principal, o ator seleciona o botão com o ícone de avião de papel sem ter digitado nenhum texto na caixa de mensagem (ou apenas espaços em branco).
+2. O sistema identifica que o campo está vazio.
+3. O sistema não realiza nenhuma ação de envio e mantém o botão de envio desabilitado ou impede a inserção na linha do tempo.
+
+#### E2 - Falha no Upload do Anexo
+1. No passo 3 do Fluxo Alternativo A1, o ator seleciona um arquivo que excede o limite de **10 MB** ou possui uma extensão proibida (** .exe, .bat, .sh **).
+2. O sistema valida o arquivo e detecta a incompatibilidade.
+3. O sistema exibe a mensagem de erro: *"Arquivo inválido. Limite máximo de 5 MB e extensões executáveis não permitidas."*
