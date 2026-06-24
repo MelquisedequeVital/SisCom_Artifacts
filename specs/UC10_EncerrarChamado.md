@@ -1,8 +1,11 @@
-# Caso de Uso: UC_EncerrarChamado
+# Caso de Uso: UC10_EncerrarChamado
 
-**Objetivo:** Permitir que o Usuário Requerente encerre um chamado ativo de dentro da tela de chat após confirmar que seu pedido foi atendido, fornecendo feedback sobre a resolução.  
+**Objetivo:** Permitir que o Usuário Requerente encerre um chamado ativo de dentro da tela de chat após confirmar que seu pedido foi atendido, fornecendo feedback sobre a resolução. 
+
 **Requisitos:** RF005 (Módulo de Finalização de Atendimentos)  
+
 **Atores:** Usuário Requerente (UReq)  
+
 **Condição de entrada:** O ator está com um chat de chamado ativo aberto na página de mensagens (`UC_TrocarMensagens`).
 
 ---
