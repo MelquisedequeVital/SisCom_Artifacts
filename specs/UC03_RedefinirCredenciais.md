@@ -1,9 +1,13 @@
-# Caso de Uso: UCX - Redefinir Credenciais
+# Caso de Uso: UC03 - Redefinir Credenciais
 
 **Objetivo:** Permitir que o Administrador resete as credenciais de acesso de um usuário, garantindo a recuperação de conta ou a aplicação de medidas de segurança.
+
 **Requisitos:** [RF005] - Redefinição de Credenciais; [RNF1003] - Criptografia de Dados em Repouso.
+
 **Atores:** Administrador.
+
 **Condição de entrada:** O Administrador deve estar autenticado e acessar a interface de "Gestão de Usuários" para localizar o perfil do usuário alvo.
+
 
 ---
 
