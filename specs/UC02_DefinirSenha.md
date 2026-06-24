@@ -1,4 +1,4 @@
-# Caso de Uso: UCX - Definir Senha
+# Caso de Uso: UC02 - Definir Senha
 
 **Objetivo:** Permitir que o utilizador realize o cadastro inicial da sua senha de acesso ao sistema de forma segura, após ter a sua identidade validada pela instituição através da API CEHAP.
 
