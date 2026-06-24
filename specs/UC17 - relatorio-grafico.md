@@ -1,9 +1,11 @@
-## [RF4002] - Relatório Gráfico: Como gestor, eu gostaria de visualizar graficamente métricas do meu departamento, contendo quantidade de solicitações enviadas, resolvidas, principais motivos e média de mensagens por chamado, para que eu possa formular relatórios de produtividade.
-
-**Caso de uso:** Visualização de Métricas e Geração de Relatórios do Setor  
+# UC17 - Visualização de Métricas e Geração de Relatórios do Setor  
+ 
 **Objetivo:** Permitir que o gestor visualize graficamente as métricas do seu setor (solicitações, resoluções, motivos e interações) para acompanhar o desempenho e formular relatórios de produtividade.  
+
 **Requisitos:** [RF4002]  
+
 **Atores:** Gestor  
+
 **Condição de entrada:** O ator faz login no sistema e acessa a área de dashboard/relatórios exclusiva da sua gestão.  
 
 ### Fluxo Principal
