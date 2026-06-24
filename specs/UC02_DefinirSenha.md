@@ -1,8 +1,11 @@
 # Caso de Uso: UCX - Definir Senha
 
 **Objetivo:** Permitir que o utilizador realize o cadastro inicial da sua senha de acesso ao sistema de forma segura, após ter a sua identidade validada pela instituição através da API CEHAP.
+
 **Requisitos:** [RF002] - Definição de Senha; [RNF1003] - Criptografia de Dados em Repouso.
+
 **Atores:** Utilizador Comum (no primeiro acesso).
+
 **Condição de entrada:** O utilizador deve ter passado pela validação de identidade via API CEHAP (no login) e o sistema ter identificado a ausência de uma senha cadastrada na base local.
 
 ---
