@@ -1,8 +1,11 @@
-# Caso de Uso: UC_IniciarChatDireto
+# Caso de Uso: UC09_IniciarChatDireto
 
 **Objetivo:** Permitir que um ator com perfil de Gestor tenha a opção de iniciar uma comunicação direta com outro gestor da organização a partir da tela de abertura de chamados, pulando a triagem por setor, ou optar por seguir com a abertura de um chamado normal.  
+
 **Requisitos:** RF2002
+
 **Atores:** Gestor  
+
 **Condição de entrada:** O ator seleciona a opção de abrir um chamado no dashboard principal.
 
 ---
