@@ -4,7 +4,7 @@
 
 **Requisitos:** [RF002] - Definição de Senha; [RNF1003] - Criptografia de Dados em Repouso.
 
-**Atores:** Utilizador Comum (no primeiro acesso).
+**Atores:** Usuário do Sistema.
 
 **Condição de entrada:** O utilizador deve ter passado pela validação de identidade via API CEHAP (no login) e o sistema ter identificado a ausência de uma senha cadastrada na base local.
 
