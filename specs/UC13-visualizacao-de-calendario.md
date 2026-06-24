@@ -1,9 +1,12 @@
-## [RF3004] - Visualização de calendário: Como usuário comum, eu gostaria de visualizar um calendário contendo todas as reuniões marcadas, conforme: [RF3001] - Agendamento de reuniões, que requerem minha presença para eu poder me organizar e comparecer nas reuniões.
+## UC13 - Visualização de Calendário Pessoal
 
-**Caso de uso:** Visualização de Calendário Pessoal  
+  
 **Objetivo:** Permitir que o usuário comum consiga visualizar as reuniões marcadas que necessitam da sua presença para organizar sua agenda.  
-**Requisitos:** [RF3001]  
+
+**Requisitos:** [RF3001] , [RF3004] 
+
 **Atores:** Usuário comum  
+
 **Condição de entrada:** O ator faz login no sistema e é redirecionado para a página de dashboard.  
 
 ### Fluxo Principal
