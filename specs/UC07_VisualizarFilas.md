@@ -1,4 +1,4 @@
-# Caso de Uso: UCX - Visualizar Filas de Chamados
+# Caso de Uso: UC07 - Visualizar Filas de Chamados
 
 **Objetivo:** Permitir que funcionários do setor visualizem a organização dos chamados pendentes, facilitando a gestão do fluxo de trabalho e a identificação de demandas urgentes.
 
