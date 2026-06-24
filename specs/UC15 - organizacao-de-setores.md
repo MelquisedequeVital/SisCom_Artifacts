@@ -1,9 +1,11 @@
-## [RF4001] - Organização de Setores: Como administrador, eu gostaria de cadastrar e organizar os setores internos da instituição, para que o roteamento de chamados funcione corretamente, conforme a estrutura definida em: [RNF1007] - Departamento Responsável.
+# UC15 - Cadastro e Organização de Setores
 
-**Caso de uso:** Cadastro e Organização de Setores  
 **Objetivo:** Permitir o cadastro, a organização dos setores internos da instituição e o correto roteamento de chamados.  
-**Requisitos:** [RNF1007]  
+
+**Requisitos:** [RNF1007] ,[RF4001] 
+
 **Atores:** Administrador  
+
 **Condição de entrada:** O ator faz login no sistema.  
 
 ### Fluxo Principal
