@@ -1,9 +1,12 @@
-## [RF4003] - Pesquisa e Histórico Setorial: Como gestor, eu gostaria de buscar e ler todos os chats abertos e encerrados no meu setor, com o uso de pesquisa avançada, para facilitar a auditoria interna do meu departamento, garantindo a privacidade conforme: [RNF1002] - Conformidade com a LGPD.
+# UC15 - Auditoria e Pesquisa de Histórico de Chats do Setor  
 
-**Caso de uso:** Auditoria e Pesquisa de Histórico de Chats do Setor  
+
 **Objetivo:** Permitir que o gestor busque, filtre e leia o histórico de chats abertos e encerrados do seu setor para fins de auditoria interna, garantindo a privacidade das informações.  
-**Requisitos:** [RNF1002]  
+
+**Requisitos:** [RNF1002] , [RF4003]
+
 **Atores:** Gestor  
+
 **Condição de entrada:** O ator faz login no sistema, acessa o painel do seu setor e possui as permissões necessárias de gestão.  
 
 ### Fluxo Principal
