@@ -1,9 +1,11 @@
-## [RF3003] - Controle de Agendamentos: Como administrador, eu gostaria de realizar o controle global de agendamentos, redefinir credenciais e gerenciar salas de reunião, para evitar conflitos de horários na instituição.
+## UC14 - Gerenciar Salas e Agendamentos Globais 
 
-**Caso de uso:** Gerenciar Salas e Agendamentos Globais  
 **Objetivo:** Permitir que o administrador realize um controle global de agendamentos, gerencie salas de reunião, ajude usuários a recuperar credenciais e evite conflitos de horários.  
+
 **Requisitos:** [RF3003]  
+
 **Atores:** Administrador  
+
 **Condição de entrada:** O ator faz login no sistema e é redirecionado para o seu painel de controle.  
 
 ### Fluxo Principal
