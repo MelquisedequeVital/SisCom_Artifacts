@@ -1,4 +1,4 @@
-# UC15 - Auditoria e Pesquisa de Histórico de Chats do Setor  
+# UC16 - Auditoria e Pesquisa de Histórico de Chats do Setor  
 
 
 **Objetivo:** Permitir que o gestor busque, filtre e leia o histórico de chats abertos e encerrados do seu setor para fins de auditoria interna, garantindo a privacidade das informações.  
