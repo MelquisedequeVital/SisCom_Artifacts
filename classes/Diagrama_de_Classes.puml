@@ -3,25 +3,42 @@ skinparam classAttributeIconSize 0
 skinparam visibilityCharCharSeparator " "
 
 ' ==========================================
-' DEFINIÇÕES DE CLASSES E ENUMS
+' MÓDULO 1: INFRAESTRUTURA E AUTENTICAÇÃO
 ' ==========================================
 
-interface API_CEHAP as "API_CEHAP" {
+interface BD_CEHAP
+
+interface API_CEHAP {
+    -endpoint: String
+    +validarCredenciais(email: String, senha: String): Boolean
+    -aplicar algoritmo de hash(senha: String): String
+    +salvarSenha(usuarioEmail: String, novaSenha: String): void
+    +atualizarRegistroUsuario(usuario: UsuarioDoSistema): void
 }
 
 
-
-class UsuarioRepository{
-    -apiUrl: String
-
-    +buscarUsuarios(): List<UsuariosDoSistema>
-    +buscarUsuariosporId(usuarioID: String): UsuarioDoSistema
-    +salvarSenha(usuarioID: String): void
-
+class UsuarioService {
+    +validarCredenciais(email: String, senha: String): Boolean
+    +salvarSenha(usuarioEmail: String, novaSenha: String): void
+    +atualizarRegistroUsuario(usuario: UsuarioDoSistema): void
 }
 
-class UsuarioService{
-    + obterEVerificarUsuario(cpf: String): UsuarioBD
+UsuarioService --- API_CEHAP : "consome"
+API_CEHAP --- BD_CEHAP : "consome"
+UsuarioService --* UsuarioDoSistema : "adiciona regras de negócio a"
+
+' ==========================================
+' MÓDULO 2: USUÁRIOS E PERMISSÕES
+' ==========================================
+
+enum StatusAtividade {
+    ATIVO
+    INATIVO
+}
+
+class Setor {
+    -nome: String
+    -codigo: String
 }
 
 class UsuarioDoSistema {
@@ -29,8 +46,7 @@ class UsuarioDoSistema {
     -emailInstitucional: String
     -senha: String
     -senhaPendente: Boolean
-    
-    ' Métodos gerais de fluxo de chamados
+    -chamados: List<Chamado>
     +abrirChamado(motivo: String, mensagemInicial: String, urgencia: Urgencia, setorDestino: Setor): void
     +atualizarStatusChamado(chamado: Chamado, novoStatus: Status): void
     +encerrarChamado(chamado: Chamado): void
@@ -38,45 +54,29 @@ class UsuarioDoSistema {
     +filtrarChamados(campo: String, valor: String): List<Chamado>
 }
 
-
-
 class Administrador {
-    ' Responsabilidades exclusivas de administração
     +bloquearUsuario(usuario: UsuarioDoSistema): void
     +redefinirSenha(usuario: UsuarioDoSistema, novaSenha: String): void
     +buscarUsuarios(): List<UsuarioDoSistema>
+    +filtrarLogsAuditoria(campo: String, valor: String): List<LogAuditoria>
 }
 
 class Gestor {
-    ' Responsabilidades exclusivas de gestão de setor
     +buscarChamadosdoSetor(): List<Chamado>
+    -exportarRelatorio(): void 
 }
 
-class Setor {
-    -nome: String
-}
+UsuarioDoSistema <|-- Administrador
+UsuarioDoSistema <|-- Gestor
+Gestor "1" o-- "1..*" Setor 
+Setor "1" o-- "0..*" UsuarioDoSistema 
+UsuarioDoSistema o-- StatusAtividade : "possui"
 
-class Chamado {
-    -motivo: String
-    -mensagemInicial: String
-    +realizarTriagem(): UsuarioDoSistema
-    -notificarUsuarioRequerido(): void
-}
+' ==========================================
+' MÓDULO 3: FLUXO DE CHAMADOS E CHAT
+' ==========================================
 
-class Chat {
-    -participantes: List<UsuarioDoSistema>
-    +enviarMensagem(mensagem: Mensagem): void
-    +enviarAnexo(anexo: Anexo): void
-    +exibirMensagens(): void
-}
-
-class Mensagem {
-    -conteudo: String
-    -remetente: UsuarioDoSistema
-    -dataEnvio: Date
-}
-
-enum Status {
+enum StatusChamado {
     ABERTO
     EM_ANDAMENTO
     FECHADO
@@ -88,32 +88,66 @@ enum Urgencia {
     ALTA
 }
 
-' ==========================================
-' RELACIONAMENTOS E ASSOCIAÇÕES
-' ==========================================
+class Mensagem {
+    -idMensagem: UUID
+    -conteudo: String
+    -remetente: UsuarioDoSistema
+    -dataEnvio: Date
+    -horaEnvio: Time
+    -lido: Boolean
+}
 
-' Relação API com Usuarios
-UsuarioService --o UsuarioRepository : "consome"
-UsuarioRepository --o API_CEHAP : "consome"
-UsuarioService o.down. UsuarioDoSistema : "valida e manipula"
+class Chat {
+    -participantes: List<UsuarioDoSistema>
+    -cacheOffline: List<Mensagem>
+    +enviarMensagem(mensagem: Mensagem): void
+    +enviarAnexo(anexo: Anexo): void
+    +exibirMensagens(): void
+    +salvarCacheOffline(mensagem: Mensagem): void
+}
 
-' Heranças 
-UsuarioDoSistema <|-- Administrador
-UsuarioDoSistema <|-- Gestor
+class Chamado {
+    -motivo: String
+    -mensagemInicial: String
+    -dataHoraAbertura: DateTime
+    -dataHoraFechamento: DateTime
+    +realizarTriagem(): UsuarioDoSistema
+    -notificarUsuarioRequerido(): void
+}
 
-' Relacionamentos de Setor e Usuários
-Gestor "1" o-- "1..*" Setor 
-Setor "1" o-- "0..*" UsuarioDoSistema 
-
-' Relacionamentos de Chamado
 Chamado *-- Urgencia
-Chamado *-- Status
+Chamado *-- StatusChamado
 Chamado *-- Setor
 Chamado *-- Chat
-Chamado "0..*" --o "1" UsuarioDoSistema : criado por (requisitante) >
-Chamado "0..*" --o "1" UsuarioDoSistema : atribuído a (responsável) >
-
-' Relacionamentos de Chat e Mensagem
 Chat *-- "0..*" Mensagem
+
+' Vínculos entre Usuários e Chamados
+Chamado "0..*" o-- "1" UsuarioDoSistema : "criado por (requerente)"
+Chamado "0..*" o-- "1" UsuarioDoSistema : "atribuído a (requerido)"
+
+' ==========================================
+' MÓDULO 4: AUDITORIA
+' ==========================================
+
+enum AcaoSistema {
+    LOGIN
+    LOGOUT
+    ABRIR_CHAMADO
+    ATUALIZAR_CHAMADO
+    ENCERRAR_CHAMADO
+    ENVIAR_MENSAGEM
+    ENVIAR_ANEXO
+}
+
+class LogAuditoria {
+    -idLog: UUID
+    -dataHora: DateTime
+    -acao: AcaoSistema
+    -ip: String
+    -identificadorUsuario: UUID
+}
+
+LogAuditoria *-- AcaoSistema
+BD_CEHAP *-- "0..*" LogAuditoria
 
 @enduml
